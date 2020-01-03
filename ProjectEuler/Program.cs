@@ -1,6 +1,7 @@
 ﻿//https://projecteuler.net/
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjectEuler
@@ -16,6 +17,8 @@ namespace ProjectEuler
             Problem3();
             Problem4();
             Problem5();
+            Problem6();
+            Problem7();
             Console.ReadKey();
 
         }
@@ -124,6 +127,73 @@ namespace ProjectEuler
             }
 
             Console.WriteLine("Project Euler Q5; Smallest Multiple = " + i);
+        }
+
+        static void Problem6()
+        {
+            long sum = 0;
+            long squared = 0;
+            long result = 0;
+
+            const int N = 100;
+
+            sum = N * (N + 1) / 2;
+            squared = (N * (N + 1) * (2 * N + 1)) / 6;
+
+            result = sum * sum - squared;
+
+            Console.WriteLine("Project Euler Q6; Sum Square Difference= " + result);
+        }
+
+        static void Problem7()
+        {
+            bool isPrime(int numm)
+            {
+                if (numm <= 1)
+                {
+                    return false;
+                }
+
+                if (numm == 2)
+                {
+                    return true;
+                }
+
+                if (numm % 2 == 0)
+                {
+                    return false;
+                }
+
+                int counter = 3;
+
+                while ((counter * counter) <= numm)
+                {
+                    if (numm % counter == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        counter += 2;
+                    }
+                }
+
+                return true;
+            }
+
+            int numPrimes = 1;
+            int numm = 1;
+
+            while (numPrimes < 10001)
+            {
+                numm = numm + 2;
+                if (isPrime(numm))
+                {
+                    numPrimes++;
+                }
+            }
+
+            Console.WriteLine("Project Euler Q7; 10001st prime = " + numm);
         }
 
 
